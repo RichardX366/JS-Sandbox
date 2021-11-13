@@ -120,7 +120,7 @@ const Home: FC = () => {
                     {x.toString()}
                   </span>
                 ) : typeof x === 'string' ? (
-                  <span className='text-yellow-200'>{x}</span>
+                  <span className='text-yellow-200'>'{x}'</span>
                 ) : typeof x === 'number' ? (
                   <span className='text-green-200'>{x}</span>
                 ) : typeof x === 'bigint' ? (
