@@ -1,16 +1,14 @@
 import { useState } from '@hookstate/core';
 import Head from 'next/head';
-import { useRouter } from 'next/router';
-import React, { useEffect } from 'react';
-import Example from '../components/Example';
+import Link from 'next/link';
+import { FC, useEffect } from 'react';
 
-const Home: React.FC = () => {
+const Home: FC = () => {
   return (
     <div className='container'>
       <Head>
-        <title>Landing page</title>
+        <title>JS Sandbox</title>
       </Head>
-      <Example />
     </div>
   );
 };

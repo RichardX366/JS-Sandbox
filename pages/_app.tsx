@@ -1,30 +1,17 @@
 import React, { useEffect } from 'react';
 import type { AppProps } from 'next/app';
 import 'tailwindcss/tailwind.css';
-import AxiosHelper from '../services/config';
 import Notification from '../components/Notification';
-import { globalAuthToken } from '../state';
-import { useState } from '@hookstate/core';
 import { useRouter } from 'next/router';
-import { Persistence } from '@hookstate/persistence';
-
-export const isBrowser = typeof window !== 'undefined';
+import { globalUser } from '../helpers/state';
 
 const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
-  const authToken = useState(globalAuthToken);
-  const router = useRouter();
-
+  const router = useRouter(); /* 
   useEffect(() => {
-    if (isBrowser) {
-      authToken.attach(Persistence('state.authToken'));
-      if (authToken.value) {
-        AxiosHelper.setAxiosHeader({ token: authToken.value });
-      } else {
-        router.push('/login');
-      }
+    if (!globalUser.value) {
+      router.push('login');
     }
-    AxiosHelper.setAxiosBaseUrl();
-  }, []);
+  }, [globalUser]); */
   return (
     <>
       <Component {...pageProps} />

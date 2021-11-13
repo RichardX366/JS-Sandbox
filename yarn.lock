@@ -66,10 +66,10 @@
   "resolved" "https://registry.npmjs.org/@hapi/hoek/-/hoek-9.1.1.tgz"
   "version" "9.1.1"
 
-"@headlessui/react@^1.0.0":
-  "integrity" "sha512-mjqRJrgkbcHQBfAHnqH0yRxO/y/22jYrdltpE7WkurafREKZ+pj5bPBwYHMt935Sdz/n16yRcVmsSCqDFHee9A=="
-  "resolved" "https://registry.npmjs.org/@headlessui/react/-/react-1.0.0.tgz"
-  "version" "1.0.0"
+"@headlessui/react@^1.4.2":
+  "integrity" "sha512-N8tv7kLhg9qGKBkVdtg572BvKvWhmiudmeEpOCyNwzOsZHCXBtl8AazGikIfUS+vBoub20Fse3BjawXDVPPdug=="
+  "resolved" "https://registry.npmjs.org/@headlessui/react/-/react-1.4.2.tgz"
+  "version" "1.4.2"
 
 "@heroicons/react@^1.0.1":
   "integrity" "sha512-uikw2gKCmqnvjVxitecWfFLMOKyL9BTFcU4VM3hHj9OMwpkCr5Ke+MRMyY2/aQVmsYs4VTq7NCFX05MYwAHi3g=="
@@ -1949,7 +1949,7 @@
     "iconv-lite" "0.4.24"
     "unpipe" "1.0.0"
 
-"react-dom@^16.6.0 || ^17", "react-dom@^16.9.0 || ^17", "react-dom@17.0.1":
+"react-dom@^16 || ^17 || ^18", "react-dom@^16.6.0 || ^17", "react-dom@^16.9.0 || ^17", "react-dom@17.0.1":
   "integrity" "sha512-6eV150oJZ9U2t9svnsspTMrWNyHc6chX0KzDeAOXftRa8bNeOKTTfCJ7KorIwenkHd2xqVTBTCZd79yk/lx/Ug=="
   "resolved" "https://registry.npmjs.org/react-dom/-/react-dom-17.0.1.tgz"
   "version" "17.0.1"
@@ -1968,7 +1968,7 @@
   "resolved" "https://registry.npmjs.org/react-refresh/-/react-refresh-0.8.3.tgz"
   "version" "0.8.3"
 
-"react@^16.6.0 || ^17", "react@^16.8.0 || ^17.0.0", "react@^16.8.6 || ^17.0.0", "react@^16.9.0 || ^17", "react@>= 16", "react@>=16", "react@15.x.x || 16.x.x || 17.x.x", "react@17.0.1":
+"react@^16 || ^17 || ^18", "react@^16.6.0 || ^17", "react@^16.8.0 || ^17.0.0", "react@^16.8.6 || ^17.0.0", "react@^16.9.0 || ^17", "react@>= 16", "react@15.x.x || 16.x.x || 17.x.x", "react@17.0.1":
   "integrity" "sha512-lG9c9UuMHdcAexXtigOZLX8exLWkW0Ku29qPRU8uhF2R9BN96dLCt0psvzPLlHc5OWkgymP3qwTRgbnw5BKx3w=="
   "resolved" "https://registry.npmjs.org/react/-/react-17.0.1.tgz"
   "version" "17.0.1"

@@ -1,4 +1,4 @@
-import { Fragment, useEffect } from 'react';
+import { FC, useEffect, Fragment } from 'react';
 import { Transition } from '@headlessui/react';
 import {
   CheckCircleIcon,
@@ -6,10 +6,10 @@ import {
   XCircleIcon,
 } from '@heroicons/react/outline';
 import { XIcon } from '@heroicons/react/solid';
-import { globalNotifications } from '../../state';
+import { globalNotifications } from '../../helpers/state';
 import { useState } from '@hookstate/core';
 
-export default function Notification() {
+const Notification: FC = () => {
   const state = useState(globalNotifications);
 
   useEffect(() => {
@@ -92,4 +92,6 @@ export default function Notification() {
       </div>
     </>
   );
-}
+};
+
+export default Notification;
