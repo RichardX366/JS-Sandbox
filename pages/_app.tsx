@@ -1,23 +1,14 @@
 import React, { useEffect } from 'react';
 import type { AppProps } from 'next/app';
 import 'tailwindcss/tailwind.css';
-import Notification from '../components/Notification';
-import { useRouter } from 'next/router';
 import { globalUser } from '../helpers/state';
+import { Persistence } from '@hookstate/persistence';
 
 const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
-  const router = useRouter(); /* 
   useEffect(() => {
-    if (!globalUser.value) {
-      router.push('login');
-    }
-  }, [globalUser]); */
-  return (
-    <>
-      <Component {...pageProps} />
-      <Notification />
-    </>
-  );
+    globalUser.attach(Persistence('state.user'));
+  }, []);
+  return <Component {...pageProps} />;
 };
 
 export default MyApp;
