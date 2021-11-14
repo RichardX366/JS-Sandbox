@@ -13,7 +13,7 @@
     "@hookstate/core": "^3.0.7",
     "@hookstate/persistence": "^3.0.0",
     "@tailwindcss/forms": "^0.3.4",
-    "axios": "^0.21.1",
+    "axios": "^0.21.4",
     "next": "^10.0.0",
     "react": "17.0.1",
     "react-dom": "17.0.1",
