@@ -5,7 +5,7 @@ const students: { [key: string]: { name: string; code: string } } = {};
 
 const ioHandler = (req: ClientRequest, res: any) => {
   if (!res.socket.server.io) {
-    const io = new Server(res.socket.server, { path: '/io/' });
+    const io = new Server(res.socket.server);
 
     io.on('connection', (socket) => {
       const removeStudent = () => {
