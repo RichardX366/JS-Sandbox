@@ -208,7 +208,7 @@ const Home: FC = () => {
                   <div className='border-box rounded-t-md flex justify-between bg-gray-700 text-white text-3xl p-4'>
                     {student.name || 'No Name Inputted'}
                     <button
-                      onClick={() => runCode(code.value)}
+                      onClick={() => runCode(student.code)}
                       type='button'
                       className='inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-base font-medium rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500'
                     >
@@ -230,7 +230,9 @@ const Home: FC = () => {
                         code: x,
                       });
                     }}
-                    onKeyPress={(e) => (e.ctrlKey ? runCode(code.value) : null)}
+                    onKeyPress={(e) =>
+                      e.ctrlKey ? runCode(student.code) : null
+                    }
                     data-gramm='false'
                     data-gramm_editor='false'
                     data-enable-grammarly='false'
