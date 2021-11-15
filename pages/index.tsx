@@ -12,10 +12,10 @@ interface IStudent {
 }
 
 const Home: FC = () => {
-  const runCode = (code: string) => {
+  const runCode = async (code: string) => {
     try {
       if (code.replaceAll(' ', '').replaceAll('\n', '')) {
-        newLog(eval(code.replaceAll('console.log', 'newLog')));
+        newLog(await eval(code.replaceAll('console.log', 'newLog')));
       }
     } catch (e: any) {
       console.error(e);
@@ -59,7 +59,6 @@ const Home: FC = () => {
       io.on('init', (data) =>
         students.set(
           Object.keys(data).map((x) => {
-            console.log(data[x]);
             return { id: x, name: data[x].name, code: data[x].code };
           })
         )
@@ -201,33 +200,22 @@ const Home: FC = () => {
             </div>
           </div>
         ) : (
-          <div className='grid grid-cols-2 mt-16 gap-4 bg-blue'>
+          <div className='grid grid-cols-4 mt-16 gap-4 bg-blue'>
             {students.value.length ? (
               students.value.map((student) => (
                 <div key={student.id}>
-                  <div className='border-box rounded-t-md flex justify-between bg-gray-700 text-white text-3xl p-4'>
+                  <div className='border-box rounded-t-md flex justify-between bg-gray-700 text-white text-lg p-2'>
                     {student.name || 'No Name Inputted'}
-                    <button
-                      onClick={() => runCode(student.code)}
-                      type='button'
-                      className='inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-base font-medium rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500'
-                    >
-                      Run Code
-                      <PlayIcon
-                        className='ml-3 -mr-1 h-5 w-5'
-                        aria-hidden='true'
-                      />
-                    </button>
                   </div>
                   <textarea
-                    rows={18}
-                    className='bg-gray-700 w-full text-white resize-none font-mono text-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 block rounded-b-md'
+                    rows={10}
+                    className='bg-gray-700 w-full text-white resize-none font-mono  shadow-sm focus:ring-blue-500 focus:border-blue-500 block rounded-b-md'
                     value={student.code}
                     onChange={async (e) => {
-                      const x = e.target.value;
+                      findStudentById(student.id).code.set(e.target.value);
                       (await socket).emit('teacherChangeCode', {
                         id: student.id,
-                        code: x,
+                        code: e.target.value,
                       });
                     }}
                     onKeyPress={(e) =>
@@ -240,7 +228,7 @@ const Home: FC = () => {
                 </div>
               ))
             ) : (
-              <div className='mt-48 col-span-2 text-white text-center text-9xl font-bold'>
+              <div className='mt-48 col-span-full text-white text-center text-9xl font-bold'>
                 There are currently
                 <br />
                 no students

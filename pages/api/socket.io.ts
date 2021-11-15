@@ -39,6 +39,7 @@ const ioHandler = (req: ClientRequest, res: any) => {
             socket.emit('makeStudent');
             newStudent({ name: fullName });
           } else {
+            students[socket.id].name = fullName;
             io.to('teachers').emit('nameChange', {
               student: socket.id,
               name: fullName,
