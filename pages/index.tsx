@@ -104,7 +104,7 @@ const Home: FC = () => {
         <div className='flex justify-between'>
           <input
             type={user.role.value === 'student' ? 'text' : 'password'}
-            className='text-white bg-gray-900 shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-64 sm:text-sm border-gray-600 rounded-md'
+            className='text-white bg-gray-900 shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-64 text-sm md:text-base border-gray-600 rounded-md'
             placeholder='Full Name'
             onChange={async (e) => {
               user.name.set(e.target.value);
@@ -126,15 +126,14 @@ const Home: FC = () => {
       </div>
 
       <div
-        className={`fixed w-full h-full bg-gray-500 p-4${
-          user.role.value === 'teacher' ? ' overflow-y-scroll' : ''
+        className={`fixed w-full h-full bg-gray-500 p-4 ${
+          user.role.value === 'teacher' ? 'overflow-y-scroll' : ''
         }`}
       >
         {user.role.value === 'student' ? (
           <div className='grid grid-cols-2 w-full h-full pt-16 gap-4'>
             <textarea
-              rows={18}
-              className='bg-gray-700 w-full text-white resize-none font-mono text-2xl shadow-sm focus:ring-blue-500 focus:border-blue-500 block rounded-md'
+              className='bg-gray-700 w-full text-white resize-none font-mono text-base md:text-2xl shadow-sm focus:ring-blue-500 focus:border-blue-500 block rounded-md'
               value={code.value}
               onChange={async (e) => {
                 code.set(e.target.value);
@@ -149,50 +148,51 @@ const Home: FC = () => {
               ref={consoleDiv}
               className='w-full bg-gray-700 rounded-md text-white divide-solid divide-y-2 divide-gray-400 overflow-y-scroll'
             >
-              <div className='flex justify-between align-center text-3xl p-2 pl-4 border-b-2 border-gray-400'>
-                <span className='pt-3'>Model Console:</span>
+              <div className='flex justify-between align-center text-xl md:text-3xl p-1 md:p-2 pl-2 md:pl-4 border-b-2 border-gray-400'>
+                <span className='pt-2 md:pt-3'>Model Console:</span>
                 <button
                   onClick={() => fakeConsole.set([])}
                   type='button'
-                  className='inline-flex items-center m-2 p-2 border border-transparent rounded-full shadow-sm text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500'
+                  className='inline-flex items-center m-2 p-1 md:p-2 border border-transparent rounded-full shadow-sm text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500'
                 >
-                  <TrashIcon className='h-6 w-6' aria-hidden='true' />
+                  <TrashIcon
+                    className='h-4 w-4 md:h-6 md:w-6'
+                    aria-hidden='true'
+                  />
                 </button>
               </div>
               {fakeConsole.value.map((x, i) => (
-                <>
-                  <div
-                    className={`${
-                      x?.isCustomError ? 'bg-opacity-50 bg-red-900 ' : ''
-                    }py-2 px-3`}
-                    key={i}
-                  >
-                    {x?.isCustomError ? (
-                      <>
-                        {x.top}
-                        <br />
-                        &nbsp;&nbsp;
-                        {`At line ${x.location[0]}, column ${x.location[1]}`}
-                      </>
-                    ) : x === null ? (
-                      <span className='text-blue-300 font-bold'>null</span>
-                    ) : x === undefined ? (
-                      <span className='text-blue-300 font-bold'>undefined</span>
-                    ) : typeof x === 'boolean' || typeof x === 'function' ? (
-                      <span className='text-blue-300 font-bold'>
-                        {x.toString()}
-                      </span>
-                    ) : typeof x === 'string' ? (
-                      <span className='text-yellow-200'>'{x}'</span>
-                    ) : typeof x === 'number' ? (
-                      <span className='text-green-200'>{x}</span>
-                    ) : typeof x === 'bigint' ? (
-                      <span className='text-green-200'>{x.toString()}n</span>
-                    ) : (
-                      JSON.stringify(x)
-                    )}
-                  </div>
-                </>
+                <div
+                  className={`${
+                    x?.isCustomError ? 'bg-opacity-50 bg-red-900' : ''
+                  } py-2 px-3 text-sm md:text-base`}
+                  key={i}
+                >
+                  {x?.isCustomError ? (
+                    <>
+                      {x.top}
+                      <br />
+                      &nbsp;&nbsp;
+                      {`At line ${x.location[0]}, column ${x.location[1]}`}
+                    </>
+                  ) : x === null ? (
+                    <span className='text-blue-300 font-bold'>null</span>
+                  ) : x === undefined ? (
+                    <span className='text-blue-300 font-bold'>undefined</span>
+                  ) : typeof x === 'boolean' || typeof x === 'function' ? (
+                    <span className='text-blue-300 font-bold'>
+                      {x.toString()}
+                    </span>
+                  ) : typeof x === 'string' ? (
+                    <span className='text-yellow-200'>'{x}'</span>
+                  ) : typeof x === 'number' ? (
+                    <span className='text-green-200'>{x}</span>
+                  ) : typeof x === 'bigint' ? (
+                    <span className='text-green-200'>{x.toString()}n</span>
+                  ) : (
+                    JSON.stringify(x)
+                  )}
+                </div>
               ))}
               {setTimeout(() =>
                 consoleDiv.current?.scroll(0, consoleDiv.current.scrollHeight)
@@ -228,7 +228,7 @@ const Home: FC = () => {
                 </div>
               ))
             ) : (
-              <div className='mt-48 col-span-full text-white text-center text-9xl font-bold'>
+              <div className='mt-24 md:mt-48 col-span-full text-white text-center text-5xl md:text-9xl font-bold'>
                 There are currently
                 <br />
                 no students
