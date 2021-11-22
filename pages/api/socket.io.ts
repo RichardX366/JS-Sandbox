@@ -56,12 +56,13 @@ const ioHandler = (req: ClientRequest, res: any) => {
         });
       });
       socket.on('studentChangeCode', (code) => {
-        console.log(code, socket.id);
-        students[socket.id].code = code;
-        io.to('teachers').emit('teacherCodeUpdate', {
-          student: socket.id,
-          code: code,
-        });
+        if (students[socket.id]) {
+          students[socket.id].code = code;
+          io.to('teachers').emit('teacherCodeUpdate', {
+            student: socket.id,
+            code: code,
+          });
+        }
       });
       socket.on('disconnect', removeStudent);
     });
