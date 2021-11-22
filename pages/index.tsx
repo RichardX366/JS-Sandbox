@@ -137,7 +137,6 @@ const Home: FC = () => {
               value={code.value}
               onChange={async (e) => {
                 code.set(e.target.value);
-                console.log(e.target.value);
                 (await socket).emit('studentChangeCode', e.target.value);
               }}
               onKeyPress={(e) => (e.ctrlKey ? runCode(code.value) : null)}
